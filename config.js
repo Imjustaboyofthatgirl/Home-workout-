@@ -1,0 +1,4 @@
+window.RUHI_CONFIG = {
+  MILESTONES: [10, 20, 30],
+  EDIT_UNLOCK_MINUTES: 30,
+}

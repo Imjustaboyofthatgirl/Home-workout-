@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Ruhi‑Ready — Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-storage-compat.js"></script>
+  <script defer src="js/firebase.js"></script>
+  <script defer src="js/config.js"></script>
+  <script defer src="js/app.js"></script>
+  <script defer src="js/dashboard.js"></script>
+</head>
+<body>
+  <header class="appbar">
+    <div class="logo"><span class="accent">Ruhi</span>‑Ready</div>
+    <nav id="authNav" class="nav"></nav>
+  </header>
+
+  <main class="container">
+    <section id="authGate" class="card">
+      <h1>Welcome</h1>
+      <p class="muted">Sign up or log in to start your 12‑month challenge.</p>
+      <form id="authForm" class="authform">
+        <input id="email" type="email" placeholder="Email" required>
+        <input id="password" type="password" placeholder="Password" required>
+        <button id="loginBtn" type="submit" class="btn">Sign in</button>
+        <button id="signupBtn" type="button" class="btn outline">Create account</button>
+      </form>
+    </section>
+
+    <section id="setupGate" class="card hidden">
+      <h2>Create your year plan</h2>
+      <p class="muted">Set the 12 month titles. You can’t change them later.</p>
+      <div id="titles"></div>
+      <button id="saveTitles" class="btn full">Save 12 titles</button>
+    </section>
+
+    <section id="dashboard" class="hidden">
+      <div class="row between">
+        <h1>Your months</h1>
+        <a href="profile.html" class="btn sm ghost">Profile</a>
+      </div>
+      <p class="muted" id="stats">—</p>
+      <div id="grid" class="grid"></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+</body>
+</html>

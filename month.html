@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Ruhi‑Ready — Month</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-storage-compat.js"></script>
+  <script defer src="js/firebase.js"></script>
+  <script defer src="js/config.js"></script>
+  <script defer src="js/confetti.js"></script>
+  <script defer src="js/compare-slider.js"></script>
+  <script defer src="js/app.js"></script>
+  <script defer src="js/month.js"></script>
+</head>
+<body>
+  <header class="appbar">
+    <a class="btn sm ghost" href="index.html">← Back</a>
+    <div class="logo"><span class="accent">Ruhi</span>‑Ready</div>
+    <nav id="authNav" class="nav"></nav>
+  </header>
+
+  <main class="container" id="monthRoot">
+    <section class="card">
+      <div class="row between">
+        <div>
+          <h1 id="monthTitle">Month</h1>
+          <p class="muted" id="progress">0/30 days</p>
+        </div>
+        <div id="ring" class="ring" aria-label="progress ring"></div>
+      </div>
+      <div class="row gap">
+        <button id="lockBtn" class="btn">Unlock editing</button>
+        <button id="shareBtn" class="btn outline">Create share link</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Photos</h2>
+      <div class="grid two">
+        <div>
+          <div class="label">Start Photo</div>
+          <img id="startImg" class="ph" alt="start"/>
+          <input id="startFile" type="file" accept="image/*" class="file hidden"/>
+          <button id="startUpload" class="btn sm">Upload</button>
+        </div>
+        <div>
+          <div class="label">End Photo</div>
+          <img id="endImg" class="ph" alt="end"/>
+          <input id="endFile" type="file" accept="image/*" class="file hidden"/>
+          <button id="endUpload" class="btn sm">Upload</button>
+        </div>
+      </div>
+      <div id="compareWrap" class="mt hidden">
+        <div class="label">Compare</div>
+        <div id="compare" class="compare"></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="row between">
+        <h2>Days (1..30)</h2>
+        <span class="muted" id="lastWorkout">—</span>
+      </div>
+      <div id="grid" class="grid days"></div>
+    </section>
+  </main>
+
+  <div id="dayModal" class="modal hidden">
+    <div class="sheet">
+      <h3 id="modalTitle">Day 1</h3>
+      <label class="row gap"><input id="modalDone" type="checkbox"> Completed</label>
+      <textarea id="modalNote" rows="5" placeholder="What did you do today?"></textarea>
+      <div class="row right gap">
+        <button id="modalClose" class="btn ghost">Cancel</button>
+        <button id="modalSave" class="btn">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+</body>
+</html>

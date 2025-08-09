@@ -1,0 +1,17 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Private originals: owner read/write
+    match /phase-photos/{uid}/{monthIndex}/{fileName} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+
+    // Public mirror for shares: world‑readable, write only by owner via share creation
+    match /phase-photos-public/{publicId}/{fileName} {
+      allow read: if true;
+      allow write: if request.auth != null &&
+        exists(/databases/(default)/documents/shares/$(publicId)) &&
+        get(/databases/(default)/documents/shares/$(publicId)).data.uid == request.auth.uid;
+    }
+  }
+}

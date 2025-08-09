@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Ruhi‑Ready — Share</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore-compat.js"></script>
+  <script defer src="https://www.gstatic.com/firebasejs/10.12.4/firebase-storage-compat.js"></script>
+  <script defer src="js/firebase.js"></script>
+  <script defer src="js/compare-slider.js"></script>
+  <script defer src="js/share.js"></script>
+</head>
+<body>
+  <header class="appbar">
+    <div class="logo"><span class="accent">Ruhi</span>‑Ready</div>
+  </header>
+  <main class="container">
+    <section class="card">
+      <h1 id="title">Month</h1>
+      <p class="muted" id="progress">0/30 days</p>
+      <div id="ring" class="ring"></div>
+    </section>
+
+    <section class="card">
+      <h2>Photos</h2>
+      <div id="compare" class="compare"></div>
+    </section>
+
+    <section class="card">
+      <h2>Days</h2>
+      <div id="grid" class="grid days readonly"></div>
+    </section>
+  </main>
+</body>
+</html>

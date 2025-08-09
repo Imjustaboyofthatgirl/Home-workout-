@@ -1,0 +1,36 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Profiles: owner only
+    match /profiles/{uid} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+
+    // Months (phases): owner only
+    match /phases/{uid}/months/{monthIndex} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+
+    // Days: owner only
+    match /days/{uid}/months/{monthIndex}/days/{day} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+
+    // Photos doc (paths only, not the binary)
+    match /photos/{uid}/months/{monthIndex} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+
+    // Public share surface: world‑readable snapshot
+    match /shares/{publicId} {
+      allow read: if true;
+      allow create: if request.auth != null && request.resource.data.uid == request.auth.uid;
+      allow update, delete: if request.auth != null && resource.data.uid == request.auth.uid;
+    }
+    match /shares/{publicId}/days/{day} {
+      allow read: if true;
+      allow write: if false;
+    }
+  }
+}
